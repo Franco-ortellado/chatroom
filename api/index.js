@@ -17,8 +17,6 @@ const bcryptSalt = bcrypt.genSaltSync(10);
 
 const app = express();
 
-app.use('/uploads', express.static(__dirname + '/uploads'));
-
 app.use(express.json());
 app.use(cookieParser());
 
@@ -33,6 +31,7 @@ app.get('/test', (req, res) => {
 	res.json('Hello World');
 });
 
+app.use('/uploads', express.static(__dirname + '/uploads'));
 app.get('/profile', (req, res) => {
 	const token = req.cookies?.token;
 
