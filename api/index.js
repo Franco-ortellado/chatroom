@@ -213,18 +213,18 @@ wss.on('connection', (connection, req) => {
 
 		let fileName = null;
 
-		if (file) {
-			const parts = file.name.split('.');
-			const ext = parts[parts.length - 1];
-			fileName = Date.now() + '.' + ext;
-			const path = __dirname + '/uploads/' + fileName;
+		// if (file) {
+		// 	const parts = file.name.split('.');
+		// 	const ext = parts[parts.length - 1];
+		// 	fileName = Date.now() + '.' + ext;
+		// 	const path = __dirname + '/uploads/' + fileName;
 
-			const bufferData = new Buffer(file.data.split(',')[1], 'base64');
+		// 	const bufferData = new Buffer(file.data.split(',')[1], 'base64');
 
-			fs.writeFile(path, bufferData, () => {
-				console.log('file saved: ' + path);
-			});
-		}
+		// 	fs.writeFile(path, bufferData, () => {
+		// 		console.log('file saved: ' + path);
+		// 	});
+		// }
 
 		if (recipient && (text || file)) {
 			const messageDoc = await Message.create({

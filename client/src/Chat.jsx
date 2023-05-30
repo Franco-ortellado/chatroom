@@ -5,6 +5,7 @@ import Logo from './Logo';
 import {uniqBy} from 'lodash';
 import axios from 'axios';
 import Contacts from './Contacts';
+import uploadFile from './inputfile';
 
 function Chat() {
 	const [ws, setWs] = useState(null);
@@ -52,14 +53,11 @@ function Chat() {
 
 	function handleMessage(e) {
 		const messageData = JSON.parse(e.data);
-		console.log({e, messageData});
 
 		if ('online' in messageData) {
 			showOnlinePeople(messageData.online);
 		} else if ('text' in messageData) {
-			if (messageData.sender === selectedUserId) {
-				setMessages((prev) => [...prev, {...messageData}]);
-			}
+			setMessages((prev) => [...prev, {...messageData}]);
 		}
 	}
 
@@ -68,29 +66,46 @@ function Chat() {
 			setWs(null);
 			setId(null);
 			setUsername(null);
+			window.location.reload();
 		});
 	}
 
-	function sendMessage(e, file = null) {
+	async function sendMessage(e, file = null) {
 		if (e) e.preventDefault();
 
 		if (!selectedUserId) return;
 
-		ws.send(
-			JSON.stringify({
-				message: {
-					recipient: selectedUserId,
-					text: newMessageText,
-					file,
-				},
-			})
-		);
-
 		if (file) {
-			axios.get('/messages/' + selectedUserId).then((res) => {
-				setMessages(res.data);
-			});
+			let theFile = await uploadFile(file);
+			ws.send(
+				JSON.stringify({
+					message: {
+						recipient: selectedUserId,
+						text: theFile,
+					},
+				})
+			);
+
+			setNewMessageText('');
+			setMessages((prev) => [
+				...prev,
+				{
+					text: theFile,
+					sender: id,
+					recipient: selectedUserId,
+					_id: Date.now(),
+				},
+			]);
 		} else {
+			ws.send(
+				JSON.stringify({
+					message: {
+						recipient: selectedUserId,
+						text: newMessageText,
+					},
+				})
+			);
+
 			setNewMessageText('');
 			setMessages((prev) => [
 				...prev,
@@ -104,21 +119,10 @@ function Chat() {
 		}
 	}
 
-	function sendFile(e) {
-		const reader = new FileReader();
-		reader.readAsDataURL(e.target.files[0]);
-		reader.onload = () => {
-			sendMessage(null, {
-				name: e.target.files[0].name,
-				data: reader.result,
-			});
-		};
-	}
-
 	useEffect(() => {
 		const div = divUnderMessages.current;
 		if (div) {
-			div.scrollIntoView({behavioe: 'smooth', block: 'end'});
+			div.scrollIntoView({behavior: 'smooth', block: 'end'});
 		}
 	}, [messages]);
 
@@ -221,36 +225,6 @@ function Chat() {
 											}
 										>
 											{m.text}
-											{m.file && (
-												<div>
-													<a
-														target="_blank"
-														className="flex items-center gap-1 underline"
-														href={
-															axios.defaults
-																.baseURL +
-															'/uploads/' +
-															m.file
-														}
-													>
-														<svg
-															xmlns="http://www.w3.org/2000/svg"
-															fill="none"
-															viewBox="0 0 24 24"
-															strokeWidth="1.5"
-															stroke="currentColor"
-															className="w-4 h-4"
-														>
-															<path
-																strokeLinecap="round"
-																strokeLinejoin="round"
-																d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13"
-															/>
-														</svg>
-														{m.file}
-													</a>
-												</div>
-											)}
 										</div>
 									</div>
 								))}
@@ -271,8 +245,12 @@ function Chat() {
 						<label className="bg-gray-300 p-2 text-white rounded-md cursor-pointer">
 							<input
 								type="file"
+								name="imageorvideo"
 								className="hidden"
-								onChange={sendFile}
+								// onChange={sendFile}
+								onChange={(e) =>
+									sendMessage(null, e.target.files[0])
+								}
 							/>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
