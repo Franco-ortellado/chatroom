@@ -11,10 +11,10 @@ let uploadFile = async (file) => {
 
 	data.append('file', file);
 	data.append('upload_preset', 'images');
-	data.append('api_key', '868277821175827');
+	data.append('api_key', process.env.CLOUDINARY_API_KEY);
 
 	const res = await fetch(
-		'https://api.cloudinary.com/v1_1/de6yc2elf/image/upload',
+		`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_API_SECRET}/image/upload`,
 		{
 			method: 'POST',
 			body: data,
@@ -22,8 +22,6 @@ let uploadFile = async (file) => {
 	);
 
 	let img = await res.json();
-
-	console.log(img.secure_url);
 
 	return img.secure_url;
 };
