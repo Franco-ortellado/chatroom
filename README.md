@@ -44,7 +44,7 @@ Para ejecutar el backend, sigue estos pasos:
 
 ## Frontend
 
-El frontend de la aplicación se encuentra en la carpeta `front`. Utiliza las siguientes tecnologías:
+El frontend de la aplicación se encuentra en la carpeta `client`. Utiliza las siguientes tecnologías:
 
 - **React** <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg" width="20" height="20"> y **Vite** para el desarrollo del frontend. 
 - **Tailwind CSS** <img src="https://github.com/devicons/devicon/blob/master/icons/tailwindcss/tailwindcss-plain.svg" width="20" height="20"> para los estilos. 
