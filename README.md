@@ -1,4 +1,10 @@
-Puedes encontrarme en LinkedIn: [Franco Ortellado](https://www.linkedin.com/in/franco-ortellado/)
+## Contacto
+
+Puedes encontrarme en LinkedIn:
+[<img align="left" alt="LinkedIn" width="22px" src="https://github.com/devicons/devicon/blob/master/icons/linkedin/linkedin-original.svg" />](https://www.linkedin.com/in/franco-ortellado/)
+[Franco Ortellado](https://www.linkedin.com/in/franco-ortellado/)
+
+
 # ChatRoom
 
 Este proyecto es una aplicación de chat desarrollada en dos partes: el frontend y el backend.
