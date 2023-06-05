@@ -1,16 +1,21 @@
 # ChatRoom
 
-<img align="right" width="100" height="100" src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg">
+Este proyecto es una aplicación de chat desarrollada en dos partes: el frontend y el backend.
+
+<div style="display: flex; flex-wrap: wrap; justify-content:center;">
+ <img align="right" width="100" height="100" src="https://cdn.worldvectorlogo.com/logos/cloudinary-2.svg">
+
 <img align="right" width="100" height="100" src="https://github.com/devicons/devicon/blob/master/icons/tailwindcss/tailwindcss-plain.svg">
 <img align="right" width="100" height="100" src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-original.svg">
 <img align="right" width="100" height="100" src="https://github.com/devicons/devicon/blob/master/icons/express/express-original.svg">
 <img align="right" width="100" height="100" src="https://github.com/devicons/devicon/blob/master/icons/mongodb/mongodb-original.svg">
 <img align="right" width="100" height="100" src="https://www.vectorlogo.zone/logos/axios/axios-ar21.svg">
-<img align="right" width="100" height="100" src="https://cdn.worldvectorlogo.com/logos/cloudinary-2.svg">
+  <img align="right" width="100" height="100" src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg">
+ </div>
+
 <br>
-
-Este proyecto es una aplicación de chat desarrollada en dos partes: el frontend y el backend.
-
+<br>
+<br>
 
 ## Backend
 
