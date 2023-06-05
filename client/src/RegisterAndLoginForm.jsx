@@ -23,7 +23,7 @@ function RegisterAndLoginForm() {
 	}
 
 	return (
-		<div className="bg-blue-50 h-screen flex items-center">
+		<div className="bg-violet-50 h-screen flex items-center">
 			<form className="w-64 mx-auto mb-20" onSubmit={handleSubmit}>
 				<input
 					value={username}
@@ -39,7 +39,7 @@ function RegisterAndLoginForm() {
 					placeholder="password"
 					className="w-full rounded-sm p-2 mb-2 border"
 				/>
-				<button className="bg-blue-500 p-2 text-white w-full rounded-sm">
+				<button className="bg-violet-500 p-2 text-white w-full rounded-sm">
 					{isLoginOrRegister}
 				</button>
 				<div className="text-center mt-2">
@@ -47,7 +47,7 @@ function RegisterAndLoginForm() {
 						<div>
 							Already a member?
 							<button
-								className="ml-1 text-blue-400"
+								className="ml-1 text-violet-400"
 								onClick={() => setIsLoginOrRegister('Login')}
 							>
 								Login here
@@ -58,7 +58,7 @@ function RegisterAndLoginForm() {
 						<div>
 							Dont have a account?
 							<button
-								className="ml-1 text-blue-400"
+								className="ml-1 text-violet-400"
 								onClick={() => setIsLoginOrRegister('Register')}
 							>
 								Register

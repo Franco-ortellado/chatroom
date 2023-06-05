@@ -5,7 +5,9 @@ import Logo from './Logo';
 import {uniqBy} from 'lodash';
 import axios from 'axios';
 import Contacts from './Contacts';
+import ImageWithLoading from './ImageWithLoading';
 import uploadFile from './inputfile';
+import ReactEmoji from 'react-emoji-render';
 
 function Chat() {
 	const [ws, setWs] = useState(null);
@@ -119,6 +121,12 @@ function Chat() {
 		}
 	}
 
+	function isImageLink(text) {
+		// Expresión regular para verificar si el texto es un enlace de imagen
+		const imageLinkRegex = /\.(jpeg|jpg|gif|png)$/i;
+		return imageLinkRegex.test(text);
+	}
+
 	useEffect(() => {
 		const div = divUnderMessages.current;
 		if (div) {
@@ -189,13 +197,13 @@ function Chat() {
 					</span>
 					<button
 						onClick={logout}
-						className="text-sm bg-blue-100 py-1 px-2 border rounded-full text-gray-500"
+						className="text-sm m-2 bg-violet-100 py-1 px-2 border rounded-full text-gray-500"
 					>
 						logout
 					</button>
 				</div>
 			</div>
-			<div className="flex flex-col bg-blue-50 w-2/3 p-2">
+			<div className="flex flex-col bg-violet-100 w-2/3 p-2">
 				<div className="flex-grow">
 					{!selectedUserId && (
 						<div className="flex h-full flex-grow items-center justify-center">
@@ -220,14 +228,23 @@ function Chat() {
 											className={
 												'text-left inline-block p-2 m-2 rounded-md text-sm ' +
 												(m.sender === id
-													? 'bg-blue-500 text-white'
+													? 'bg-violet-500 text-white'
 													: 'bg-white text-gray-500')
 											}
 										>
-											{m.text}
+											{isImageLink(m.text) ? (
+												<ImageWithLoading
+													src={m.text}
+													alt="Imagen"
+													className="max-w-xs max-h-xs"
+												/>
+											) : (
+												m.text
+											)}
 										</div>
 									</div>
 								))}
+
 								<div className="" ref={divUnderMessages}></div>
 							</div>
 						</div>
@@ -242,6 +259,7 @@ function Chat() {
 							placeholder="Type your message here"
 							className="bg-white border p-2 flex-grow rounded"
 						/>
+
 						<label className="bg-gray-300 p-2 text-white rounded-md cursor-pointer">
 							<input
 								type="file"
@@ -252,6 +270,7 @@ function Chat() {
 									sendMessage(null, e.target.files[0])
 								}
 							/>
+
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -263,13 +282,13 @@ function Chat() {
 								<path
 									strokeLinecap="round"
 									strokeLinejoin="round"
-									d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13"
+									d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
 								/>
 							</svg>
 						</label>
 						<button
 							type="submit"
-							className="bg-blue-500 p-2 text-white rounded-md"
+							className="bg-violet-500 p-2 text-white rounded-md"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
