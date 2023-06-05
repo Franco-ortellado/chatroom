@@ -2,14 +2,15 @@
 
 Este proyecto es una aplicación de chat desarrollada en dos partes: el frontend y el backend.
 
+<br>
 
- <img align="left" width="50" height="70" src="https://cdn.worldvectorlogo.com/logos/cloudinary-2.svg">
-<img align="left" width="100" height="70" src="https://github.com/devicons/devicon/blob/master/icons/tailwindcss/tailwindcss-plain.svg">
-<img align="left" width="100" height="70" src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-original.svg">
-<img align="left" width="100" height="70" src="https://github.com/devicons/devicon/blob/master/icons/express/express-original.svg">
-<img align="left" width="100" height="70" src="https://github.com/devicons/devicon/blob/master/icons/mongodb/mongodb-original.svg">
-<img align="left" width="100" height="70" src="https://www.vectorlogo.zone/logos/axios/axios-ar21.svg">
-  <img align="left" width="100" height="70" src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg">
+  <img align="left" width="70" height="70" src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg">
+ <img align="left" width="70" height="70" src="https://cdn.worldvectorlogo.com/logos/cloudinary-2.svg">
+<img align="left" width="70" height="70" src="https://github.com/devicons/devicon/blob/master/icons/tailwindcss/tailwindcss-plain.svg">
+<img align="left" width="70" height="70" src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-original.svg">
+<img align="left" width="70" height="70" src="https://github.com/devicons/devicon/blob/master/icons/express/express-original.svg">
+<img align="left" width="70" height="70" src="https://github.com/devicons/devicon/blob/master/icons/mongodb/mongodb-original.svg">
+<img align="left" width="70" height="70" src="https://www.vectorlogo.zone/logos/axios/axios-ar21.svg">
 
 
 <br>
