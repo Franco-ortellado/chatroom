@@ -1,3 +1,4 @@
+Puedes encontrarme en LinkedIn: [Franco Ortellado](https://www.linkedin.com/in/franco-ortellado/)
 # ChatRoom
 
 Este proyecto es una aplicación de chat desarrollada en dos partes: el frontend y el backend.
